@@ -48,8 +48,21 @@ app.post('/api/notes', (req, res) => {
 });
 
 app.delete('/api/notes/:id', (req, res) => {
-  // Receive a query parameter containing the id of a note to delete.
-  // Read all notes from the db.json file, remove the note with the given id property, and then rewrite the notes to the db.json file.
+    const id = req.params.id;
+
+    fs.readFile(path.join(__dirname, '/db/db.json'), 'utf8', (err, data) => {
+      if (err) throw err;
+      const notes = JSON.parse(data);
+      const updatedNotes = notes.filter((note) => note.id !== id);
+      fs.writeFile(
+        path.join(__dirname, '/db/db.json'),
+        JSON.stringify(updatedNotes),
+        (err) => {
+          if (err) throw err;
+          res.send('Note deleted');
+        }
+      );
+    });
 });
 
 app.listen(PORT, () => {
