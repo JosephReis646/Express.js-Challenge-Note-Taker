@@ -1,15 +1,22 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
+  "description": "A simple note-taking application built with Express.js",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/note-taker.git"
+  },
+  "author": "Your Name",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "uuid": "^9.0.0"
   },
-  "keywords": [],
-  "description": ""
+  "engines": {
+    "node": ">=14.0.0"
+  }
 }
